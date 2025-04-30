@@ -3,17 +3,19 @@ package com.carSys.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
-//import javax.validation.constraints.Size;
 
 @Data
 @AllArgsConstructor
 public class User {
-    long id;
+    long user_id;
     String username;
     String password;
+    String userRole;
 
-    public User(String username, String password) {
+
+    public User(String username, String password,String userRole) {
         this.username = username;
         this.password = password;
+        this.userRole = userRole;
     }
 }
