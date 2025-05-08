@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class AssignmentService {
+
     @Autowired
     private AssignmentMapper assignmentMapper;
 

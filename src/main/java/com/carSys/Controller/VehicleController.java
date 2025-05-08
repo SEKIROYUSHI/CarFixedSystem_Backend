@@ -15,7 +15,7 @@ public class VehicleController {
     private VehicleService vehicleService;
 
     // 根据车辆 ID 查询车辆
-    @GetMapping("/Vehicle/{vehicle_id}")
+    @GetMapping("/{vehicle_id}")
     public Vehicle getVehicleById(@PathVariable long vehicle_id) {
         return vehicleService.getVehicleById(vehicle_id);
     }

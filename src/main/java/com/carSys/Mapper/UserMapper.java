@@ -14,7 +14,7 @@ public interface UserMapper {
     // 查询所有用户
     List<User> selectAllUsers();
     // 插入新用户
-    int insertUser(User user);
+    int addNewUser(User user);
     // 根据用户 ID 更新用户信息
     int updateUser(User user);
     // 根据用户 ID 删除用户

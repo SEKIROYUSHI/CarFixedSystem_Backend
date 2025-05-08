@@ -31,7 +31,7 @@ public class RepairOrderController {
         return repairOrderService.getRepairOrdersByUserId(userId);
     }
 
-    @GetMapping("/getOrdersByUserId/{userId}")
+    @GetMapping("/getOrdersByVehicleId/{vehicleId}")
     public List<RepairOrder> getOrdersByVehicleId(@PathVariable long vehicleId) {
         return repairOrderService.getRepairOrderByVehicleId(vehicleId);
     }

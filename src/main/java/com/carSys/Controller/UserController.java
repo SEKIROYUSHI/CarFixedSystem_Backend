@@ -45,9 +45,8 @@ public class UserController {
     }
 
     // 用户登录接口
-    @PostMapping("/logIn")
+    @PostMapping("/login")
     public boolean logIn(@RequestBody User user) {
-        // 这里简单模拟登录逻辑，实际应用中需要根据业务需求完善
         User storedUser = userService.getUserByUserName(user.getUsername());
         if (storedUser != null && storedUser.getPassword().equals(user.getPassword())) {
             return true;

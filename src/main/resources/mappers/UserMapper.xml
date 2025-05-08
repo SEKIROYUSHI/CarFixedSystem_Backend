@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.carSys.Mapper.UserMapper">
+    <resultMap id="userResultMap" type="com.carSys.Entity.User">
+        <id property="user_id" column="user_id"/>
+        <result property="username" column="username"/>
+        <result property="password" column="password"/>
+        <result property="userRole" column="user_role" typeHandler="org.apache.ibatis.type.EnumTypeHandler"/>
+    </resultMap>
+
+    <select id="selectUserByUserName" parameterType="java.lang.String" resultMap="userResultMap">
+        select * from user where username = #{username}
+    </select>
+
+    <insert id="addNewUser" parameterType="com.carSys.Entity.User">
+        insert into user(username,password,user_role) values (#{username},#{password},#{userRole})
+    </insert>
+
+    <update id="updateUser" parameterType="com.carSys.Entity.User">
+        update user set password = #{password}, user_role = #{userRole} where username = #{username}
+    </update>
+
+    <delete id="deleteUser" parameterType="java.lang.String">
+        delete from user where username = #{username}
+    </delete>
+</mapper>

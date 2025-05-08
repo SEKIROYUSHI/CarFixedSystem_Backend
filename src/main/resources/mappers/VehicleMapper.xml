@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.carSys.Mapper.VehicleMapper">
+    <resultMap id="vehicleResultMap" type="com.carSys.Entity.Vehicle">
+        <id property="vehicle_id" column="vehicle_id"/>
+        <result property="user_id" column="user_id"/>
+        <result property="license_plate" column="license_plate"/>
+        <result property="model" column="model" />
+        <result property="manufacture_year" column="manufacture_year" />
+    </resultMap>
+
+    <select id="selectVehiclesByUserId" parameterType="java.lang.Long" resultMap="vehicleResultMap">
+        SELECT * FROM vehicle WHERE user_id = #{user_id}
+    </select>
+
+    <insert id="insertVehicle" parameterType="com.carSys.Entity.Vehicle">
+        INSERT INTO vehicle(user_id, license_plate, model, manufacture_year)
+        VALUES (#{user_id}, #{license_plate}, #{model}, #{manufacture_year})
+    </insert>
+
+    <update id="updateVehicle" parameterType="com.carSys.Entity.Vehicle">
+        UPDATE vehicle
+        SET license_plate = #{license_plate}, model = #{model}, manufacture_year = #{manufacture_year}
+        WHERE vehicle_id = #{vehicle_id}
+    </update>
+
+    <delete id="deleteVehicle" parameterType="java.lang.Long">
+        DELETE FROM vehicle WHERE vehicle_id = #{vehicle_id}
+    </delete>
+
+    <select id="selectVehicleById" parameterType="java.lang.Long" resultMap="vehicleResultMap">
+        SELECT * FROM vehicle WHERE vehicle_id = #{vehicle_id}
+    </select>
+
+    <select id="selectAllVehicles" resultMap="vehicleResultMap">
+        SELECT * FROM vehicle
+    </select>
+
+
+</mapper>
+
