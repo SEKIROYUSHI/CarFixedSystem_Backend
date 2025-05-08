@@ -1,0 +1,6 @@
+spring:
+  datasource:
+    url: jdbc:mysql://120.26.72.145:3306/CarFixedSystem?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: Hzh187_0178
+    driver-class-name: com.mysql.cj.jdbc.Driver
