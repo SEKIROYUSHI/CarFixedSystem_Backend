@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.carSys.Mapper.AssignmentMapper">
+    <resultMap id="assignmentResultMap" type="com.carSys.Entity.Assignment">
+        <id property="assignment_id" column="assignment_id"/>
+        <result property="repair_person_id" column="repair_person_id"/>
+        <result property="order_id" column="order_id"/>
+        <result property="hours_worked" column="hours_worked"/>
+        <result property="task_type" column="task_type" typeHandler="org.apache.ibatis.type.EnumTypeHandler"/>
+        <result property="status" column="status" typeHandler="org.apache.ibatis.type.EnumTypeHandler"/>
+    </resultMap>
+
+    <select id="selectAssignmentsByRepairPersonId" parameterType="java.lang.Long" resultMap="assignmentResultMap">
+        SELECT * FROM assignment WHERE repair_person_id = #{repair_person_id}
+    </select>
+
+    <insert id="insertAssignment" parameterType="com.carSys.Entity.Assignment">
+        INSERT INTO assignment(repair_person_id, order_id, hours_worked, task_type, status)
+        VALUES (#{repair_person_id}, #{order_id}, #{hours_worked}, #{task_type}, #{status})
+    </insert>
+
+    <update id="distributeAssignment">
+        UPDATE assignment
+        SET status = 'ASSIGNED',
+            repair_person_id = #{repair_person_id}
+        WHERE assignment_id = #{assignment_id}
+    </update>
+
+   <update id="refuseAssignment">
+       UPDATE assignment
+         SET status = 'PENDING',repair_person_id = null
+         WHERE assignment_id = #{assignment_id}
+   </update>
+
+    <update id="acceptAssignment">
+        UPDATE assignment
+        SET status = 'IN_PROGRESS'
+        WHERE assignment_id = #{assignment_id}
+    </update>
+
+    <update id="completeAssignment">
+        UPDATE assignment
+        SET status = 'COMPLETED'
+        WHERE assignment_id = #{assignment_id}
+    </update>
+</mapper>

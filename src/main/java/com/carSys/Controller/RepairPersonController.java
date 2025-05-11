@@ -1,9 +1,12 @@
 package com.carSys.Controller;
 
 import com.carSys.Entity.RepairPerson;
+import com.carSys.Enums.TaskType;
 import com.carSys.Service.RepairPersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/carsys/repairPerson")
@@ -39,5 +42,11 @@ public class RepairPersonController {
     @DeleteMapping("/{repairPersonId}")
     public boolean deleteRepairPerson(@PathVariable long repairPersonId) {
         return repairPersonService.deleteRepairPerson(repairPersonId);
+    }
+
+    // 根据专业查询维修人员
+    @GetMapping("/specialty/{specialty}")
+    public List<RepairPerson> getRepairPersonBySpecialty(@PathVariable TaskType specialty) {
+        return repairPersonService.getRepairPersonBySpecialty(specialty);
     }
 }

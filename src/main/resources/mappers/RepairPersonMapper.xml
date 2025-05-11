@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.carSys.Mapper.RepairPersonMapper">
+    <resultMap id="repairPersonResultMap" type="com.carSys.Entity.RepairPerson">
+        <id property="repair_person_id" column="repair_person_id"/>
+        <result property="user_id" column="user_id"/>
+        <result property="specialty" column="specialty"/>
+        <result property="hourly_rate" column="hourly_rate"/>
+    </resultMap>
+
+    <select id="selectRepairPersonByUserId" parameterType="java.lang.Long" resultMap="repairPersonResultMap">
+        SELECT * FROM repair_person WHERE user_id = #{user_id}
+    </select>
+
+    <insert id="insertRepairPerson" parameterType="com.carSys.Entity.RepairPerson">
+        INSERT INTO repair_person(user_id, specialty, hourly_rate)
+        VALUES (#{user_id}, #{specialty}, #{hourly_rate})
+    </insert>
+
+    <update id="updateRepairPerson" parameterType="com.carSys.Entity.RepairPerson">
+        UPDATE repair_person
+        SET specialty = #{specialty}, hourly_rate = #{hourly_rate}
+        WHERE repair_person_id = #{repair_person_id}
+    </update>
+
+    <delete id="deleteRepairPerson" parameterType="java.lang.Long">
+        DELETE FROM repair_person WHERE repair_person_id = #{repair_person_id}
+    </delete>
+
+<!--    此处的SQL语句是为了根据能力筛选维修人员，对于能力是否需要单独做张表待定-->
+    <select id="selectRepairPersonBySpecialty" parameterType="java.lang.String" resultMap="repairPersonResultMap">
+        SELECT * FROM repair_person WHERE specialty LIKE CONCAT('%', #{specialty}, '%')
+    </select>
+</mapper>

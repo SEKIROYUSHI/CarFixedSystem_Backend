@@ -13,9 +13,29 @@ public class AssignmentService {
     @Autowired
     private AssignmentMapper assignmentMapper;
 
-    // 分配维修任务
-    public boolean assignRepairTask(Assignment assignment) {
+    // 生成维修任务
+    public boolean insertAssignment(Assignment assignment) {
         return assignmentMapper.insertAssignment(assignment) > 0;
+    }
+
+    // 分配维修任务
+    public boolean distributeAssignment(long assignment_id,long repairPersonId) {
+        return assignmentMapper.distributeAssignment(assignment_id,repairPersonId) > 0;
+    }
+
+    // 拒绝维修任务
+    public boolean refuseAssignment(long assignment_id,long repairPersonId) {
+        return assignmentMapper.refuseAssignment(assignment_id,repairPersonId) > 0;
+    }
+
+    // 接受维修任务
+    public boolean acceptAssignment(long assignment_id,long repairPersonId) {
+        return assignmentMapper.acceptAssignment(assignment_id,repairPersonId) > 0;
+    }
+
+    //完成维修任务
+    public boolean completeAssignment(long assignment_id) {
+        return assignmentMapper.completeAssignment(assignment_id) > 0;
     }
 
     // 查询订单对应的分配记录

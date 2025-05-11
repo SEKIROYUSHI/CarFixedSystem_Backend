@@ -1,7 +1,10 @@
 package com.carSys.Mapper;
 
 import com.carSys.Entity.RepairPerson;
+import com.carSys.Enums.TaskType;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 @Mapper
 public interface RepairPersonMapper {
@@ -19,4 +22,6 @@ public interface RepairPersonMapper {
 
     // 删除维修人员（逻辑或物理）
     int deleteRepairPerson(long repair_person_id);
+
+    List<RepairPerson> selectRepairPersonBySpecialty(TaskType specialty);
 }

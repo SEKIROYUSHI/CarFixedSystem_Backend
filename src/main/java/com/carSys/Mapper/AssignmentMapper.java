@@ -2,6 +2,7 @@ package com.carSys.Mapper;
 
 import com.carSys.Entity.Assignment;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -10,12 +11,20 @@ public interface AssignmentMapper {
     // 插入任务分配
     int insertAssignment(Assignment assignment);
 
+    int distributeAssignment(@Param("assignment_id") long assignment_id,@Param("repair_person_id") long repairPersonId);
+
+    int refuseAssignment(@Param("assignment_id") long assignment_id,@Param("repair_person_id") long repairPersonId);
+
+    int acceptAssignment(@Param("assignment_id") long assignment_id,@Param("repair_person_id") long repairPersonId);
+
+    int completeAssignment(@Param("assignment_id") long assignment_id);
+
     // 根据订单ID查询分配记录
     List<Assignment> selectAssignmentsByOrderId(long order_id);
 
     // 根据维修人员ID查询分配记录
     List<Assignment> selectAssignmentsByRepairPersonId(long repair_person_id);
-    //todo：此处更新状态可能不需要更新整个对象，而是只需要找到id后更改其状态即可
+
     //更新分配状态
     int updateAssignmentStatus(Assignment assignment);
 }
