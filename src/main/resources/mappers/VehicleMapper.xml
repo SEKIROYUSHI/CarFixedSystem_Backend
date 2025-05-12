@@ -13,7 +13,8 @@
         SELECT * FROM vehicle WHERE user_id = #{user_id}
     </select>
 
-    <insert id="insertVehicle" parameterType="com.carSys.Entity.Vehicle">
+    <insert id="insertVehicle" parameterType="com.carSys.Entity.Vehicle"
+            useGeneratedKeys="true" keyProperty="vehicle_id">
         INSERT INTO vehicle(user_id, license_plate, model, manufacture_year)
         VALUES (#{user_id}, #{license_plate}, #{model}, #{manufacture_year})
     </insert>

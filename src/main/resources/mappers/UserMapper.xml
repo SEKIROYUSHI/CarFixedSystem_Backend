@@ -12,7 +12,8 @@
         select * from user where username = #{username}
     </select>
 
-    <insert id="addNewUser" parameterType="com.carSys.Entity.User">
+    <insert id="addNewUser" parameterType="com.carSys.Entity.User"
+            useGeneratedKeys="true" keyProperty="user_id">
         insert into user(username,password,user_role) values (#{username},#{password},#{userRole})
     </insert>
 

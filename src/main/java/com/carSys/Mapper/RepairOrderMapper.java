@@ -18,6 +18,7 @@ public interface RepairOrderMapper {
 
     List<RepairOrder> selectRepairOrderByVehicleId(long vehicle_id);
 
+    //此处已经设置了数据库触发器，不需要再设置这个状态更新
     // 更新订单状态
     int updateRepairOrderStatus(RepairOrder repairOrder);
 

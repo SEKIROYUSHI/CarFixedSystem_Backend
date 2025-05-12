@@ -4,19 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="32ac9dec-8bba-4c19-82b1-f9b483c11851" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/carSys/Enums/UserRole.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mappers/UserMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mappers/VehicleMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="32ac9dec-8bba-4c19-82b1-f9b483c11851" name="更改" comment="feat:实现维修人员登录功能，实现工单的分配，同意，拒绝和完成等功能">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/carSys/Entity/OrderCreationRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/mappers/RepairOrderMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/carSys/RepairPersonBatchInsertTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/carSys/Controller/RepairOrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/carSys/Controller/RepairOrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/carSys/Controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/carSys/Controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/carSys/Entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/carSys/Entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/carSys/Mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/carSys/Mapper/UserMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/carSys/Service/AssignmentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/carSys/Service/AssignmentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/carSys/Service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/carSys/Service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/carSys/Controller/RepairPersonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/carSys/Controller/RepairPersonController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/carSys/Entity/Assignment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/carSys/Entity/Assignment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/carSys/Entity/RepairOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/carSys/Entity/RepairOrder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/carSys/Entity/RepairPerson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/carSys/Entity/RepairPerson.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/carSys/Enums/TaskType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/carSys/Enums/TaskType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/carSys/Mapper/RepairOrderMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/carSys/Mapper/RepairOrderMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/carSys/Service/RepairOrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/carSys/Service/RepairOrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/AssignmentMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappers/AssignmentMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/RepairPersonMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappers/RepairPersonMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappers/UserMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/VehicleMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappers/VehicleMapper.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +31,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -39,12 +44,12 @@
     &quot;assignee&quot;: &quot;18701789542&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/SEKIROYUSHI/CarFixedSystem_Backend.git",
-    "accountId": "0f5f936e-e439-432d-bdfd-faf418f68283"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/SEKIROYUSHI/CarFixedSystem_Backend.git&quot;,
+    &quot;accountId&quot;: &quot;0f5f936e-e439-432d-bdfd-faf418f68283&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 7
@@ -59,6 +64,8 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "JUnit.RepairPersonBatchInsertTest.executor": "Run",
+    "JUnit.RepairPersonBatchInsertTest.testBatchInsertRepairPersons.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "master",
@@ -80,6 +87,32 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\IDEAProjects\CarFixedSystem_Backend\src\main\resources\mappers" />
     </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.carSys" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="RepairPersonBatchInsertTest.testBatchInsertRepairPersons" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CarFixedSystem_Backend" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.carSys.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.carSys" />
+      <option name="MAIN_CLASS_NAME" value="com.carSys.RepairPersonBatchInsertTest" />
+      <option name="METHOD_NAME" value="testBatchInsertRepairPersons" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.RepairPersonBatchInsertTest.testBatchInsertRepairPersons" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -91,9 +124,31 @@
       <updated>1746697186902</updated>
       <workItem from="1746697189412" duration="657000" />
     </task>
+    <task id="LOCAL-00001" summary="feat:实现用户注册登录功能，实现为用户添加车辆以及查看车辆的功能。">
+      <option name="closed" value="true" />
+      <created>1746706929791</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1746706929791</updated>
+    </task>
+    <task id="LOCAL-00002" summary="feat:实现维修人员登录功能，实现工单的分配，同意，拒绝和完成等功能">
+      <option name="closed" value="true" />
+      <created>1746986667502</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1746986667502</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="feat:实现用户注册登录功能，实现为用户添加车辆以及查看车辆的功能。" />
+    <MESSAGE value="feat:实现维修人员登录功能，实现工单的分配，同意，拒绝和完成等功能" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat:实现维修人员登录功能，实现工单的分配，同意，拒绝和完成等功能" />
   </component>
 </project>

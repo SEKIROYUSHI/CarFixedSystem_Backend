@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.carSys.Mapper.RepairOrderMapper">
+    <resultMap id="repairOrderResultMap" type="com.carSys.Entity.RepairOrder">
+        <id property="order_id" column="order_id"/>
+        <result property="vehicle_id" column="vehicle_id"/>
+        <result property="user_id" column="user_id"/>
+       <result property="create_time" column="create_time"/>
+        <result property="complete_time" column="complete_time"/>
+        <result property="status" column="status" />
+        <result property="total_cost" column="total_cost"/>
+        <result property="repair_person_id" column="repair_person_id"/>
+    </resultMap>
+
+    <select id="selectRepairOrdersByUserId" parameterType="java.lang.Long" resultMap="repairOrderResultMap">
+        SELECT * FROM repair_order WHERE user_id = #{user_id}
+    </select>
+
+    <insert id="insertRepairOrder" parameterType="com.carSys.Entity.RepairOrder"
+            useGeneratedKeys="true" keyProperty="order_id">
+        INSERT INTO repair_order(vehicle_id, user_id, create_time, status)
+        VALUES (#{vehicle_id}, #{user_id}, NOW(), #{status})
+    </insert>
+
+    <select id="selectRepairOrderById" parameterType="java.lang.Long" resultMap="repairOrderResultMap">
+    SELECT * FROM repair_order WHERE order_id = #{order_id}
+    </select>
+
+    <select id="selectRepairOrdersByVehicleId" parameterType="java.lang.Long" resultMap="repairOrderResultMap">
+    SELECT * FROM repair_order WHERE vehicle_id = #{vehicle_id}
+    </select>
+</mapper>

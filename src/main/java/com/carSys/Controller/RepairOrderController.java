@@ -1,5 +1,6 @@
 package com.carSys.Controller;
 
+import com.carSys.Entity.OrderCreationRequest;
 import com.carSys.Entity.RepairOrder;
 import com.carSys.Service.RepairOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +16,8 @@ public class RepairOrderController {
 
     // 创建新订单（用户提交维修请求）
     @PostMapping("/createOrder")
-    public long createOrder(@RequestBody RepairOrder order) {
-        return repairOrderService.createRepairOrder(order);
+    public long createOrder(@RequestBody OrderCreationRequest request) {
+        return repairOrderService.createRepairOrderWithAssignments(request);
     }
 
     // 查询订单详情

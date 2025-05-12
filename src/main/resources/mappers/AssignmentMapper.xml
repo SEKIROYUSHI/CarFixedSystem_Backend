@@ -8,13 +8,16 @@
         <result property="hours_worked" column="hours_worked"/>
         <result property="task_type" column="task_type" typeHandler="org.apache.ibatis.type.EnumTypeHandler"/>
         <result property="status" column="status" typeHandler="org.apache.ibatis.type.EnumTypeHandler"/>
+        <result property="start_time" column="start_time"/>
+        <result property="end_time" column="end_time"/>
     </resultMap>
 
     <select id="selectAssignmentsByRepairPersonId" parameterType="java.lang.Long" resultMap="assignmentResultMap">
         SELECT * FROM assignment WHERE repair_person_id = #{repair_person_id}
     </select>
 
-    <insert id="insertAssignment" parameterType="com.carSys.Entity.Assignment">
+    <insert id="insertAssignment" parameterType="com.carSys.Entity.Assignment"
+            useGeneratedKeys="true" keyProperty="assignment_id">
         INSERT INTO assignment(repair_person_id, order_id, hours_worked, task_type, status)
         VALUES (#{repair_person_id}, #{order_id}, #{hours_worked}, #{task_type}, #{status})
     </insert>
@@ -34,13 +37,15 @@
 
     <update id="acceptAssignment">
         UPDATE assignment
-        SET status = 'IN_PROGRESS'
+        SET status = 'IN_PROGRESS',
+        start_time = NOW()
         WHERE assignment_id = #{assignment_id}
     </update>
 
     <update id="completeAssignment">
         UPDATE assignment
-        SET status = 'COMPLETED'
+        SET status = 'COMPLETED',
+        end_time = NOW()
         WHERE assignment_id = #{assignment_id}
     </update>
 </mapper>

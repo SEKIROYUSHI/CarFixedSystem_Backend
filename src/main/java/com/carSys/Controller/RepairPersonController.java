@@ -39,7 +39,7 @@ public class RepairPersonController {
     }
 
     // 删除维修人员
-    @DeleteMapping("/{repairPersonId}")
+    @DeleteMapping("/deleteRepairPerson/{repairPersonId}")
     public boolean deleteRepairPerson(@PathVariable long repairPersonId) {
         return repairPersonService.deleteRepairPerson(repairPersonId);
     }

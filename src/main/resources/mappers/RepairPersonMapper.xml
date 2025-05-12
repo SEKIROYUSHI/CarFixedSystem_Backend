@@ -12,7 +12,8 @@
         SELECT * FROM repair_person WHERE user_id = #{user_id}
     </select>
 
-    <insert id="insertRepairPerson" parameterType="com.carSys.Entity.RepairPerson">
+    <insert id="insertRepairPerson" parameterType="com.carSys.Entity.RepairPerson"
+            useGeneratedKeys="true" keyProperty="repair_person_id">
         INSERT INTO repair_person(user_id, specialty, hourly_rate)
         VALUES (#{user_id}, #{specialty}, #{hourly_rate})
     </insert>
@@ -27,7 +28,6 @@
         DELETE FROM repair_person WHERE repair_person_id = #{repair_person_id}
     </delete>
 
-<!--    此处的SQL语句是为了根据能力筛选维修人员，对于能力是否需要单独做张表待定-->
     <select id="selectRepairPersonBySpecialty" parameterType="java.lang.String" resultMap="repairPersonResultMap">
         SELECT * FROM repair_person WHERE specialty LIKE CONCAT('%', #{specialty}, '%')
     </select>
