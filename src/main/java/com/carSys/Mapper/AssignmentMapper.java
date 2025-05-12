@@ -15,6 +15,8 @@ public interface AssignmentMapper {
 
     int refuseAssignment(@Param("assignment_id") long assignment_id,@Param("repair_person_id") long repairPersonId);
 
+    String getRefusedRepairPersonsByAssignmentId(@Param("assignment_id") long assignment_id);
+
     int acceptAssignment(@Param("assignment_id") long assignment_id,@Param("repair_person_id") long repairPersonId);
 
     int completeAssignment(@Param("assignment_id") long assignment_id);
@@ -27,4 +29,6 @@ public interface AssignmentMapper {
 
     //更新分配状态
     int updateAssignmentStatus(Assignment assignment);
+
+    Assignment getAssignmentById(long assignment_id);
 }

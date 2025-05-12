@@ -10,6 +10,7 @@
         <result property="status" column="status" typeHandler="org.apache.ibatis.type.EnumTypeHandler"/>
         <result property="start_time" column="start_time"/>
         <result property="end_time" column="end_time"/>
+        <result property="refused_repair_person" column="refused_repair_person"/>
     </resultMap>
 
     <select id="selectAssignmentsByRepairPersonId" parameterType="java.lang.Long" resultMap="assignmentResultMap">
@@ -29,11 +30,23 @@
         WHERE assignment_id = #{assignment_id}
     </update>
 
-   <update id="refuseAssignment">
-       UPDATE assignment
-         SET status = 'PENDING',repair_person_id = null
-         WHERE assignment_id = #{assignment_id}
-   </update>
+    <update id="refuseAssignment">
+        UPDATE assignment
+        SET status = 'PENDING',
+        repair_person_id = null,
+        refused_repair_person =
+        CASE
+        WHEN refused_repair_person IS NULL THEN #{refusedRepairPerson}  <!-- 原字段为空时直接赋值 -->
+        ELSE CONCAT(refused_repair_person, ',', #{refusedRepairPerson})  <!-- 原字段非空时追加 -->
+        END
+        WHERE assignment_id = #{assignment_id}
+    </update>
+
+    <select id="getRefusedRepairPersonsByAssignmentId" resultType="java.lang.String" parameterType="java.lang.Long">
+        SELECT refused_repair_person
+        FROM assignment
+        WHERE assignment_id = #{assignmentId}
+    </select>
 
     <update id="acceptAssignment">
         UPDATE assignment

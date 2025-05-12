@@ -24,4 +24,8 @@
     <delete id="deleteUser" parameterType="java.lang.String">
         delete from user where username = #{username}
     </delete>
+
+    <select id="existsByInvitationCode" parameterType="java.lang.String" resultType="int">
+        SELECT COUNT(*) FROM user WHERE invitation_code = #{invitationCode}
+    </select>
 </mapper>

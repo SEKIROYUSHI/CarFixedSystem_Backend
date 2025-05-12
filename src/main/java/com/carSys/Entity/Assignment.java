@@ -15,6 +15,7 @@ public class Assignment {
     private long assignment_id;     // 分配ID
     private long order_id;          // 订单ID（外键）
     private long repair_person_id;  // 维修人员ID（外键）
+    private String refused_repair_person; // 拒绝维修人员（逗号分隔）
     private AssignmentStatus status;  // 分配状态（如"已指派"、"已完成"）
     private TaskType task_type;
     private int hours_worked;

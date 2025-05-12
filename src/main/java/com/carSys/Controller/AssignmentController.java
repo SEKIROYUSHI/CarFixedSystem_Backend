@@ -2,6 +2,7 @@ package com.carSys.Controller;
 
 import com.carSys.Entity.Assignment;
 import com.carSys.Service.AssignmentService;
+import com.carSys.Service.RepairOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,6 +14,9 @@ public class AssignmentController {
 
     @Autowired
     private AssignmentService assignmentService;
+
+    @Autowired
+    private RepairOrderService repairOrderService;
 
     // 分配维修任务（例如：管理员指派维修人员到订单）
     @PostMapping("/insertAssignment")
@@ -28,7 +32,9 @@ public class AssignmentController {
     // 拒绝维修任务（例如：维修人员拒绝接单）
     @PostMapping("/refuseAssignment/{repairPersonId}/{assignment_id}")
     public boolean refuseAssignment(@PathVariable long repairPersonId,@PathVariable long assignment_id) {
-        return assignmentService.refuseAssignment(assignment_id,repairPersonId);
+        boolean result1 =  assignmentService.refuseAssignment(assignment_id,repairPersonId);
+        boolean result2 = repairOrderService.assignRepairPersonToOrder(assignment_id);
+        return result1&&result2;
     }
 
     //todo:此处应该记录接受接单的时间，以结算完成时长

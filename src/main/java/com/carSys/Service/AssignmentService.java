@@ -28,6 +28,10 @@ public class AssignmentService {
         return assignmentMapper.refuseAssignment(assignment_id,repairPersonId) > 0;
     }
 
+    public String refusedRepairPersonsByAssignmentId(long assignment_id) {
+        return assignmentMapper.getRefusedRepairPersonsByAssignmentId(assignment_id);
+    }
+
     // 接受维修任务
     public boolean acceptAssignment(long assignment_id,long repairPersonId) {
         return assignmentMapper.acceptAssignment(assignment_id,repairPersonId) > 0;
@@ -51,5 +55,9 @@ public class AssignmentService {
     // 更新分配状态
     public int updateAssignmentStatus(Assignment assignment) {
         return assignmentMapper.updateAssignmentStatus(assignment);
+    }
+
+    public Assignment getAssignmentById(long assignment_id) {
+        return assignmentMapper.getAssignmentById(assignment_id);
     }
 }
