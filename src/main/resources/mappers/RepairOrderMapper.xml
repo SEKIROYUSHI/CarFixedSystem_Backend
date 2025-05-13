@@ -26,7 +26,7 @@
     SELECT * FROM repair_order WHERE order_id = #{order_id}
     </select>
 
-    <select id="selectRepairOrdersByVehicleId" parameterType="java.lang.Long" resultMap="repairOrderResultMap">
+    <select id="selectRepairOrderByVehicleId" parameterType="java.lang.Long" resultMap="repairOrderResultMap">
     SELECT * FROM repair_order WHERE vehicle_id = #{vehicle_id}
     </select>
 </mapper>

@@ -75,6 +75,9 @@ public class RepairOrderService {
         TaskType taskType = assignment.getTask_type();
         List<RepairPerson> fittedRepairPersons = repairPersonService.getRepairPersonBySpecialty(taskType);
         for(RepairPerson repairPerson : fittedRepairPersons) {
+            if(assignment.getRefused_repair_person() == null) {
+                return assignmentService.distributeAssignment(assignmentId, repairPerson.getRepair_person_id());
+            }
             // 2. 分配维修人员
             if(!Arrays.asList(assignment.getRefused_repair_person().split(",")).contains(Long.toString(repairPerson.getRepair_person_id()))) {
                return assignmentService.distributeAssignment(assignmentId, repairPerson.getRepair_person_id());

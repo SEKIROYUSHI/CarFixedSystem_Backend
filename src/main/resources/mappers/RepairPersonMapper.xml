@@ -4,7 +4,7 @@
     <resultMap id="repairPersonResultMap" type="com.carSys.Entity.RepairPerson">
         <id property="repair_person_id" column="repair_person_id"/>
         <result property="user_id" column="user_id"/>
-        <result property="specialty" column="specialty"/>
+        <result property="specialty" column="specialty" typeHandler="com.carSys.TypeHandler.TaskTypeHandler"/>
         <result property="hourly_rate" column="hourly_rate"/>
     </resultMap>
 
@@ -28,7 +28,7 @@
         DELETE FROM repair_person WHERE repair_person_id = #{repair_person_id}
     </delete>
 
-    <select id="selectRepairPersonBySpecialty" parameterType="java.lang.String" resultMap="repairPersonResultMap">
-        SELECT * FROM repair_person WHERE specialty LIKE CONCAT('%', #{specialty}, '%')
+    <select id="selectRepairPersonBySpecialty" parameterType="java.lang.Enum" resultMap="repairPersonResultMap">
+        SELECT * FROM repair_person WHERE specialty = #{specialty}
     </select>
 </mapper>

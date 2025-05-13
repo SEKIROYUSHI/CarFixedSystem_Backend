@@ -5,7 +5,7 @@
         <id property="user_id" column="user_id"/>
         <result property="username" column="username"/>
         <result property="password" column="password"/>
-        <result property="userRole" column="user_role" typeHandler="org.apache.ibatis.type.EnumTypeHandler"/>
+        <result property="userRole" column="user_role"  typeHandler="com.carSys.TypeHandler.UserRoleTypeHandler"/>
     </resultMap>
 
     <select id="selectUserByUserName" parameterType="java.lang.String" resultMap="userResultMap">

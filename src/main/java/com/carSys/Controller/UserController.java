@@ -20,6 +20,11 @@ public class UserController {
         return userService.getUserById(user_id);
     }
 
+    @GetMapping("/getUserByUserName/{username}")
+    public User getUserByUserName(@PathVariable String username) {
+        return userService.getUserByUserName(username);
+    }
+
     // 查询所有用户
     @GetMapping("/getAllUsers")
     public List<User> getAllUsers() {

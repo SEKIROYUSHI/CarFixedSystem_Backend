@@ -19,8 +19,8 @@
 
     <insert id="insertAssignment" parameterType="com.carSys.Entity.Assignment"
             useGeneratedKeys="true" keyProperty="assignment_id">
-        INSERT INTO assignment(repair_person_id, order_id, hours_worked, task_type, status)
-        VALUES (#{repair_person_id}, #{order_id}, #{hours_worked}, #{task_type}, #{status})
+        INSERT INTO assignment( order_id, hours_worked, task_type, status)
+        VALUES (#{order_id}, #{hours_worked}, #{task_type}, #{status})
     </insert>
 
     <update id="distributeAssignment">
@@ -36,8 +36,8 @@
         repair_person_id = null,
         refused_repair_person =
         CASE
-        WHEN refused_repair_person IS NULL THEN #{refusedRepairPerson}  <!-- 原字段为空时直接赋值 -->
-        ELSE CONCAT(refused_repair_person, ',', #{refusedRepairPerson})  <!-- 原字段非空时追加 -->
+        WHEN refused_repair_person IS NULL THEN #{repair_person_id}  <!-- 原字段为空时直接赋值 -->
+        ELSE CONCAT(refused_repair_person, ',', #{repair_person_id})  <!-- 原字段非空时追加 -->
         END
         WHERE assignment_id = #{assignment_id}
     </update>
@@ -61,4 +61,8 @@
         end_time = NOW()
         WHERE assignment_id = #{assignment_id}
     </update>
+
+    <select id="getAssignmentById">
+        SELECT * FROM assignment WHERE assignment_id = #{assignmentId}
+    </select>
 </mapper>
